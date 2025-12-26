@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CMake Configure & Build",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "-c",
+                "cd ${workspaceFolder} && rm -rf build && mkdir -p build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug .. && make"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "download",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f", "/usr/share/openocd/scripts/interface/stlink.cfg",
+                "-f", "/usr/share/openocd/scripts/target/stm32f1x.cfg",
+                "-c", "program ${workspaceFolder}/build/stm32dev.elf verify reset exit"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+        }
+    ]
+}

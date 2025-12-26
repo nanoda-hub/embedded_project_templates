@@ -1,0 +1,26 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/build/stm32dev.elf",
+            "name": "Debug with OpenOCD",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "configFiles": [
+                "/usr/share/openocd/scripts/interface/stlink.cfg",  // ST-Link配置
+                "/usr/share/openocd/scripts/target/stm32f1x.cfg"    // STM32F1配置
+            ],
+            "interface": "swd",
+            "searchDir": [],
+            "runToEntryPoint": "main",
+            "svdFile": "${workspaceFolder}/STM32F103.svd",
+            "showDevDebugOutput": "none",
+            "preLaunchTask": "CMake Configure & Build"
+        }
+    ]
+}

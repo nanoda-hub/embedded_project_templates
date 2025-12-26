@@ -1,0 +1,9 @@
+.clangd
+
+.clang-format
+
+CMakePresets.json
+
+build/
+
+.cache/
